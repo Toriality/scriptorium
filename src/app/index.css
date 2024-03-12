@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .animated {
+    transition-property: theme(transitionProperty.all);
+    transition-duration: theme(transitionDuration.100);
+  }
+}
+
+@layer base {
+  :root {
+    --color-bg-main: theme(colors.gray.100);
+    --color-bg-card: theme(colors.white);
+    --color-bg-accent: theme(colors.green.300);
+    --color-bg-item: theme(colors.gray.200);
+    --color-bg-item-hover: theme(colors.gray.100);
+    --color-bg-tag: theme(colors.cyan.100);
+    --color-bg-tag-hover: theme(colors.cyan.50);
+    --color-bg-button: theme(colors.green.600);
+    --color-bg-button-hover: theme(colors.green.500);
+    --color-bg-button-disabled: theme(colors.gray.500);
+    --color-bg-selected: theme(colors.amber.100);
+    --color-bg-selected-hover: theme(colors.amber.50);
+    --color-bg-correct: theme(colors.green.200);
+    --color-bg-incorrect: theme(colors.red.200);
+
+    --color-ring-primary: theme(colors.gray.300);
+    --color-ring-accent: theme(colors.green.300);
+    --color-ring-error: theme(colors.red.400);
+    --color-ring-tag: theme(colors.cyan.200);
+    --color-ring-tag-hover: theme(colors.cyan.300);
+    --color-ring-selected: theme(colors.amber.200);
+    --color-ring-correct: theme(colors.green.300);
+    --color-ring-incorrect: theme(colors.red.300);
+
+    --color-text-primary: theme(textColor.gray.700);
+    --color-text-link: theme(textColor.green.600);
+    --color-text-link-hover: theme(textColor.green.500);
+    --color-text-error: theme(textColor.red.400);
+    --color-text-tag: theme(textColor.cyan.600);
+  }
+  .theme-dark {
+    --color-bg-main: theme(colors.zinc.900);
+    --color-bg-card: theme(colors.zinc.800);
+    --color-bg-accent: theme(colors.green.950);
+    --color-bg-item: theme(colors.zinc.700);
+    --color-bg-item-hover: theme(colors.zinc.600);
+    --color-bg-tag: theme(colors.cyan.300);
+    --color-bg-tag-hover: theme(colors.cyan.200);
+    --color-bg-button: theme(colors.green.600);
+    --color-bg-button-hover: theme(colors.green.300);
+    --color-bg-button-disabled: theme(colors.gray.600);
+    --color-bg-selected: theme(colors.amber.200);
+    --color-bg-selected-hover: theme(colors.amber.100);
+    --color-bg-correct: theme(colors.green.700);
+    --color-bg-incorrect: theme(colors.red.900);
+
+    --color-ring-primary: theme(colors.zinc.700);
+    --color-ring-accent: theme(colors.green.600);
+    --color-ring-error: theme(colors.red.400);
+    --color-ring-tag: theme(colors.cyan.600);
+    --color-ring-tag-hover: theme(colors.cyan.500);
+    --color-ring-selected: theme(colors.amber.500);
+    --color-ring-correct: theme(colors.green.500);
+    --color-ring-incorrect: theme(colors.red.400);
+
+    --color-text-primary: theme(textColor.gray.400);
+    --color-text-link: theme(textColor.green.600);
+    --color-text-link-hover: theme(textColor.green.300);
+    --color-text-error: theme(textColor.red.400);
+    --color-text-tag: theme(textColor.cyan.900);
+  }
+}
+
+:root {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+* {
+  outline: none;
+}
+
+.header {
+  -webkit-app-region: drag;
+}
+.header-btn {
+  -webkit-app-region: no-drag;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 2px;
+  background: white;
+}
+
+.theme-dark *::-webkit-scrollbar {
+  width: 8px;
+  height: 2px;
+  background: black;
+}
+
+.theme-dark *::-webkit-scrollbar-thumb {
+  background-color: theme(colors.green.950);
+}
+
+.theme-dark *::-webkit-scrollbar-thumb:hover {
+  background-color: theme(colors.green.800);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: theme(colors.green.300);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: theme(colors.green.500);
+}

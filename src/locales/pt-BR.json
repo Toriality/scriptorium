@@ -1,0 +1,142 @@
+{
+  "buttons": {
+    "correct": "Correto!",
+    "done": "Feito!",
+    "incorrect": "Errado!",
+    "loadMore": "Carregar mais",
+    "reset": "Reiniciar",
+    "submit": "Enviar",
+    "submitting": "Enviando..."
+  },
+  "categories": {
+    "alt": "Ícone da categoria",
+    "forms": {
+      "errors": {
+        "icon": "URL inválida",
+        "name": {
+          "max": "O nome da categoria não pode ter mais de 24 caracteres",
+          "min": "O nome da categoria deve ter pelo menos 4 caracteres",
+          "regex": "O nome da categoria não pode conter caracteres especiais"
+        }
+      },
+      "icon": "URL do ícone",
+      "name": "Nome da Categoria",
+      "new": {
+        "subtitle": "Uma \"Categoria\" é um campo específico dentro de uma determinada disciplina. Por exemplo, em uma disciplina \"Matemática\", você pode criar categorias como álgebra, geometria e estatística.",
+        "title": "Crie uma nova categoria"
+      }
+    },
+    "title": "Categorias de {{subject}}"
+  },
+  "categories_one": "Categoria",
+  "categories_other": "Categorias",
+  "empty": {
+    "button": "Criar {{type}}",
+    "message": "Você ainda não adicionou nenhum(a) {{type}}."
+  },
+  "questions": {
+    "forms": {
+      "edit": {
+        "subtitle": "Edite os detalhes da questão. Markdown pode ser utilizado no o texto da questão e campos de opções.",
+        "title": "Editar questão"
+      },
+      "errors": {
+        "options": {
+          "max": "As opções não podem ter mais de 2.500 caracteres",
+          "min": "Por favor preencha todas as opções"
+        },
+        "tags": {
+          "max": "Uma questão não pode ter mais de 3 tags"
+        },
+        "text": {
+          "max": "A questão não pode ter mais de 5.000 caracteres",
+          "min": "A questão deve ter pelo menos 24 caracteres"
+        }
+      },
+      "new": {
+        "subtitle": "Escreva uma nova questão de múltipla escolha para sua categoria. Markdown é compatível com textos da perguntas e campos de opções.",
+        "title": "Crie uma nova questão"
+      },
+      "option": "Opção {{index}}",
+      "text": "Texto da questão"
+    },
+    "title": "Questões sobre {{category}}"
+  },
+  "questions_one": "Questão",
+  "questions_other": "Questões",
+  "settings": {
+    "language": "Selecione o idioma:",
+    "theme": "Modo escuro",
+    "title": "Configurações"
+  },
+  "subjects": {
+    "forms": {
+      "errors": {
+        "max": "O nome da disciplina não pode ter mais de 20 caracteres",
+        "min": "O nome da disciplina deve ter pelo menos 4 caracteres",
+        "regex": "O nome da disciplina só pode conter letras, números e espaços"
+      },
+      "name": "Nome da disciplina",
+      "new": {
+        "subtitle": "Uma “disciplina” representa uma área específica de conhecimento ou campo de estudo. \nPosteriormente, você organizará tópicos mais específicos em categorias. \nExemplos de disciplinas são matemática, ciências e história.",
+        "title": "Crie uma nova disciplina"
+      }
+    },
+    "title": "Selecione a matéria que deseja estudar"
+  },
+  "subjects_one": "Disciplina",
+  "subjects_other": "Disciplinas",
+  "tags": {
+    "forms": {
+      "errors": {
+        "max": "Muito longo!",
+        "min": "A tag não pode ficar vazia",
+        "regex": "Nome de tag inválido"
+      },
+      "name": "Adicionar tag"
+    },
+    "title": "Tags de {{subject}}"
+  },
+  "tags_one": "Tag",
+  "tags_other": "Tags",
+  "tests": {
+    "errors": {
+      "answers": "Por favor, responda a todas as perguntas!"
+    },
+    "forms": {
+      "custom": {
+        "button": "Teste personalizado",
+        "filterByTag": "Filtrar por tags",
+        "numberOfQuestions": "Número de perguntas: {{numberOfQuestions}}",
+        "selectTests": "Selecione as questões",
+        "subtitle": "Selecione todas as questões que deseja incluir no teste. Você pode filtrar as perguntas por tag para facilitar sua pesquisa.",
+        "title": "Criar teste personalizado"
+      },
+      "errors": {
+        "custom": {
+          "question": "Selecione pelo menos uma pergunta"
+        },
+        "max": "O nome do teste não pode ter mais de 64 caracteres",
+        "min": "Insira um nome de teste",
+        "random": {
+          "min": "Insira o número de perguntas que seu teste deve conter",
+          "noQuestions": "Nenhuma pergunta disponível com as tags selecionadas"
+        }
+      },
+      "name": "Nome de teste",
+      "new": {
+        "title": "Crie um novo teste"
+      },
+      "random": {
+        "button": "Teste aleatório",
+        "numberOfQuestions": "Número de perguntas",
+        "selectTags": "Selecione as tags que deseja incluir nas questões do teste (deixe em branco para permitir todas as questões, mesmo aquelas sem tags)",
+        "subtitle": "Gere um teste com perguntas escolhidas aleatoriamente com base nas configurações abaixo.",
+        "title": "Criar teste aleatório"
+      }
+    },
+    "title": "Testes sobre {{category}}"
+  },
+  "tests_one": "Teste",
+  "tests_other": "Testes"
+}

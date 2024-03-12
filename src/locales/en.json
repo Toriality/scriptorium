@@ -1,0 +1,142 @@
+{
+  "subjects_one": "Subject",
+  "subjects_other": "Subjects",
+  "categories_one": "Category",
+  "categories_other": "Categories",
+  "questions_one": "Question",
+  "questions_other": "Questions",
+  "tests_one": "Test",
+  "tests_other": "Tests",
+  "tags_one": "Tag",
+  "tags_other": "Tags",
+  "settings": {
+    "title": "Settings",
+    "language": "Select language:",
+    "theme": "Dark mode"
+  },
+  "subjects": {
+    "title": "Select the subject you want to study",
+    "forms": {
+      "new": {
+        "title": "Create a new subject",
+        "subtitle": "A \"subject\" represents a specific area of knowledge or field of study. You'll later organize more specific topics into categories. Examples of subjects are math, science, and history."
+      },
+      "name": "Subject name",
+      "errors": {
+        "min": "Subject name must be at least 4 characters long",
+        "max": "Subject name cannot be more than 20 characters long",
+        "regex": "Subject name can only contain letters, numbers, and spaces"
+      }
+    }
+  },
+  "categories": {
+    "title": "{{subject}} categories",
+    "forms": {
+      "new": {
+        "title": "Create a new category",
+        "subtitle": "A \"Category\" is a specific field inside given subject. For example, in a \"Math\" subject, you may create categories such as algebra, geometry and statistics."
+      },
+      "name": "Category name",
+      "icon": "Category icon URL",
+      "errors": {
+        "name": {
+          "min": "Category name must be at least 4 characters long",
+          "max": "Category name cannot be longer than 24 characters",
+          "regex": "Category name cannot contain special characters"
+        },
+        "icon": "Invalid URL"
+      }
+    },
+    "alt": "Category icon"
+  },
+  "questions": {
+    "title": "{{category}} questions",
+    "forms": {
+      "new": {
+        "title": "Create a new question",
+        "subtitle": "Write a new multiple-choice question for your category. Markdown is supported for question text and options fields."
+      },
+      "edit": {
+        "title": "Edit question",
+        "subtitle": "Edit the details of the question. Markdown is supported for question text and options fields."
+      },
+      "text": "Question text",
+      "option": "Option {{index}}",
+      "errors": {
+        "text": {
+          "min": "Question must be at least 24 characters long",
+          "max": "Question cannot be longer than 5000 characters"
+        },
+        "options": {
+          "min": "Please fill all the options",
+          "max": "Options cannot be longer than 2500 characters"
+        },
+        "tags": {
+          "max": "A question cannot have more than 3 tags"
+        }
+      }
+    }
+  },
+  "tests": {
+    "title": "{{category}} tests",
+    "forms": {
+      "new": {
+        "title": "Create a new test"
+      },
+      "custom": {
+        "button": "Custom test",
+        "title": "Create custom test",
+        "subtitle": "Select all the questions you wish to include in the test. Additionally you can filter questions by tag to make your searching easier.",
+        "selectTests": "Select questions to include",
+        "filterByTag": "Filter by tag",
+        "numberOfQuestions": "Number of questions: {{numberOfQuestions}}"
+      },
+      "random": {
+        "button": "Random test",
+        "title": "Create random test",
+        "subtitle": "Generate a test with randomly chosen questions based on the settings below.",
+        "numberOfQuestions": "Number of questions",
+        "selectTags": "Select the tags you want to include in the test's questions (Leave blank to allow all questions, even those without any tags)"
+      },
+      "name": "Test name",
+      "errors": {
+        "min": "Please enter a test name",
+        "max": "Test name cannot be more than 64 characters long",
+        "custom": {
+          "question": "Please select at least one question"
+        },
+        "random": {
+          "min": "Please enter the number of questions your test should contain",
+          "noQuestions": "No questions available with the selected tags"
+        }
+      }
+    },
+    "errors": {
+      "answers": "Please answer all the questions!"
+    }
+  },
+  "tags": {
+    "title": "{{subject}} tags",
+    "forms": {
+      "name": "Add tag",
+      "errors": {
+        "min": "Tag cannot be empty",
+        "max": "Too many characters",
+        "regex": "Invalid tag name"
+      }
+    }
+  },
+  "buttons": {
+    "submit": "Submit",
+    "submitting": "Submitting",
+    "done": "Done!",
+    "reset": "Reset",
+    "incorrect": "Incorrect answer",
+    "correct": "Correct answer",
+    "loadMore": "Load more"
+  },
+  "empty": {
+    "message": "You haven't added any {{type}} yet.",
+    "button": "Create new {{type}}"
+  }
+}

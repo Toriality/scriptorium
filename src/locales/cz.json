@@ -1,0 +1,142 @@
+{
+  "subjects_one": "Látka",
+  "subjects_other": "Látky",
+  "categories_one": "Třída",
+  "categories_other": "Třídy",
+  "questions_one": "Otázka",
+  "questions_other": "Otázky",
+  "tests_one": "Zkouška",
+  "tests_other": "Zkoušky",
+  "tags_one": "Štítek",
+  "tags_other": "Štítky",
+  "settings": {
+    "title": "Nastavení",
+    "language": "Vybrat jazyk:",
+    "theme": "Temný režim"
+  },
+  "subjects": {
+    "title": "Vyberte látku kterou se chcete učit",
+    "forms": {
+      "new": {
+        "title": "Nová látka",
+        "subtitle": "Látka je část vědomosti nebo obor učení. Později si shrnete přesnější témata do třídy. Dobré příklady látek je matematika, věda a dějepis."
+      },
+      "name": "Jméno látky",
+      "errors": {
+        "min": "Jméno látky musí obsahovat aspoň 4 znaky",
+        "max": "Jméno látky nemůže přesahovat 20 znaků",
+        "regex": "Jméno látky může obsahovat jenom písmena, číslice nebo mezery"
+      }
+    }
+  },
+  "categories": {
+    "title": "{{subject}} třídy",
+    "forms": {
+      "new": {
+        "title": "Nová třída",
+        "subtitle": "Třída je obor v látce. Například v Matematice je to algebra, geometrie nebo statistika."
+      },
+      "name": "Jméno třídy",
+      "icon": "Odkaz ikonky třídy",
+      "errors": {
+        "name": {
+          "min": "Jméno třídy musí obsahovat aspoň 4 znaky",
+          "max": "Jméno látky nemůže přesahovat 24 znaků",
+          "regex": "Jméno látky nesmí obsahovat zvlástní znaky"
+        },
+        "icon": "Neplatný odkaz"
+      }
+    },
+    "alt": "Ikonka třídy"
+  },
+  "questions": {
+    "title": "{{category}} otázky",
+    "forms": {
+      "new": {
+        "title": "Nová otázka",
+        "subtitle": "Vytvořte novou otázku s několika možnostmi pro vaší třídu. Markdown je podporován pro obsah otázky a pole s možnostmi."
+      },
+      "edit": {
+        "title": "Upravit otázku",
+        "subtitle": "Upravit titulku otázky"
+      },
+      "text": "Obsah otázky",
+      "option": "Možnost {{index}}",
+      "errors": {
+        "text": {
+          "min": "Otázky musí obsahovat aspoň 24 znaků",
+          "max": "Otázka nemůže přesahovat 5000 znaků"
+        },
+        "options": {
+          "min": "Prosíme vás abyste vyplňili všechny možnosti",
+          "max": "Možnosti nemůžou obsahovat více než 2500 znaků"
+        },
+        "tags": {
+          "max": "Otázka nemůže obsahovat víc než 3 štitky"
+        }
+      }
+    }
+  },
+  "tests": {
+    "title": "{{category}} zkoušky",
+    "forms": {
+      "new": {
+        "title": "Nová zkouška"
+      },
+      "custom": {
+        "button": "Vlastní otázka",
+        "title": "Vytvořit vlastní zkoušku",
+        "subtitle": "Vyberte všechny otázky které chcete použít v zkoušce. Také můžete shrnout otázky podle štítku aby vám to hledání šlo lépe.",
+        "selectTests": "Vyberte které otázky použít",
+        "filterByTag": "Shrnout podle štítku",
+        "numberOfQuestions": "Počet otázek: {{numberOfQuestions}}"
+      },
+      "random": {
+        "button": "Náhodná zkouška",
+        "title": "Vytvořit náhodnou zkoušku",
+        "subtitle": "Vytvořte náhodný test s vybranými otázkami podle nastavení",
+        "numberOfQuestions": "Počet otázek",
+        "selectTags": "Vyberte štítky které chcete použít v otázek zkoušky"
+      },
+      "name": "Jméno žkoušky",
+      "errors": {
+        "min": "Prosíme vás aby jste zadali jméno zkoušky",
+        "max": "Jméno zkoušky nemůže obsahovat více než 64 znaků",
+        "custom": {
+          "question": "Prosíme vás aby jste vybrali aspoň jednu otázku"
+        },
+        "random": {
+          "min": "Prosíme vás aby jste vybrali počet otázek v zkoušce",
+          "noQuestions": "Žádné otázky nejsou k dispozici k vybraném štítku"
+        }
+      }
+    },
+    "errors": {
+      "answers": "Prosíme vás abyste zodpověděli na všechny otázky!"
+    }
+  },
+  "tags": {
+    "title": "{{subject}} štítky",
+    "forms": {
+      "name": "Přidat štítek",
+      "errors": {
+        "min": "Štítek nemůže být prázdný",
+        "max": "Příliš znaků",
+        "regex": "Neplatné jméno štítku"
+      }
+    }
+  },
+  "buttons": {
+    "submit": "Potvrdit",
+    "submitting": "Potvrzuje se",
+    "done": "Hotovo!",
+    "reset": "Znovu",
+    "incorrect": "Špatná odpověd",
+    "correct": "Správná odpověd",
+    "loadMore": "Načíst více"
+  },
+  "empty": {
+    "message": "Nepřidali jste žádný {{type}} ještě",
+    "button": "Vytvořit nový {{type}}"
+  }
+}
