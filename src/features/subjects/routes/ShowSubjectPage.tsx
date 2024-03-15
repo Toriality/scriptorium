@@ -1,22 +1,17 @@
-import { useParams } from "react-router-dom";
-import { useData } from "@/providers/Data";
-import { useEffect } from "react";
 import { Card } from "@/components/Card";
 import { CategoryList } from "@/features/categories";
-import { TagList } from "@/features/tags";
+import { TagList, useTags } from "@/features/tags";
 import { useTranslation } from "react-i18next";
 import { AnimatedPage } from "@/components/UI/AnimatedPage";
+import { useSubject } from "../hooks/useSubject";
+import { useCategories } from "@/features/categories/";
 
 export function ShowSubjectPage() {
   const { t } = useTranslation();
 
-  const { state, actions } = useData();
-  const { subject_name } = useParams();
-
-  useEffect(() => {
-    if (!state.current.subject) actions.setCurrentSubject(subject_name!);
-    if (state.current.category) actions.leaveCurrentCategoryData();
-  }, [state, actions, subject_name]);
+  const { subject } = useSubject();
+  const { categories, editCategory, deleteCategory } = useCategories();
+  const { tags, addTag, deleteTag } = useTags();
 
   return (
     <AnimatedPage>
@@ -43,29 +38,25 @@ export function ShowSubjectPage() {
       <Card>
         <Card.Title>
           {t("categories.title", {
-            subject: state.current.subject?.subject,
+            subject: subject?.subject,
           })}
         </Card.Title>
 
         <CategoryList
-          categories={state.current.subject?.categories || null}
-          deleteCategory={actions.deleteCategory}
-          editCategory={actions.editCategory}
+          categories={categories || null}
+          deleteCategory={deleteCategory}
+          editCategory={editCategory}
         />
       </Card>
 
       <Card>
         <Card.Title disableNewButton>
           {t("tags.title", {
-            subject: state.current.subject?.subject,
+            subject: subject?.subject,
           })}
         </Card.Title>
 
-        <TagList
-          tags={state.current.subject?.tags || null}
-          handleDelete={actions.deleteTag}
-          handleAddTag={actions.addTag}
-        />
+        <TagList tags={tags} handleDelete={deleteTag} handleAddTag={addTag} />
       </Card>
     </AnimatedPage>
   );

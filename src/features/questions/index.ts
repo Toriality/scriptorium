@@ -5,4 +5,6 @@ export * from "./routes/NewQuestionPage";
 export * from "./components/QuestionList";
 export * from "./components/QuestionComponent";
 
+export * from "./hooks/useQuestions";
+
 export * from "./types";

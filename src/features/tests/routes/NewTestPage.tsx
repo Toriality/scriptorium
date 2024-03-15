@@ -1,12 +1,10 @@
 import { Card } from "@/components/Card";
-import { useData } from "@/providers/Data";
-import { useNavigate } from "react-router-dom";
 import { RandomTestForm } from "../components/RandomTestForm";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useTranslation } from "react-i18next";
 import { CustomTestForm } from "../components/CustomTestForm";
-import { CustomTestFormType, RandomTestFormType } from "..";
+import { CustomTestFormType, RandomTestFormType, useTests } from "..";
 import { AnimatedPage } from "@/components/UI/AnimatedPage";
 
 type TypesOfTest = "custom" | "random";
@@ -14,17 +12,14 @@ type TypesOfTest = "custom" | "random";
 export const NewTestPage: React.FC = () => {
   const { t } = useTranslation();
 
-  const { actions } = useData();
-  const navigate = useNavigate();
+  const { createCustomTest, createRandomTest } = useTests();
 
   async function onSubmitCustom(data: CustomTestFormType) {
-    await actions.createCustomTest(data);
-    navigate("../../", { replace: true });
+    await createCustomTest(data);
   }
 
   async function onSubmitRandom(data: RandomTestFormType) {
-    await actions.createRandomTest(data);
-    navigate("../../", { replace: true });
+    await createRandomTest(data);
   }
 
   const [typeOfTest, setTypeOfTest] = useState<TypesOfTest>("custom");

@@ -1,15 +1,15 @@
 import { customTestSchema, CustomTestSchemaType } from "../utils/schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useData } from "@/providers/Data";
 import { Form, SubmitInput, TextInput } from "@/components/Form";
 import { twMerge } from "tailwind-merge";
 import { useEffect, useMemo, useState } from "react";
 import { InputError } from "@/components/Form/InputError";
-import { QuestionDatabaseType } from "@/features/questions";
-import { Tag, TagList } from "@/features/tags";
+import { QuestionDatabaseType, useQuestions } from "@/features/questions";
+import { Tag, TagList, useTags } from "@/features/tags";
 import { useTranslation } from "react-i18next";
 import { CustomTestFormType } from "../types";
+import { useCategory } from "@/features/categories";
 
 interface Props {
   title: string;
@@ -36,25 +36,30 @@ export const CustomTestForm: React.FC<Props> = ({
     resolver: zodResolver(customTestSchema),
   });
 
-  const { state } = useData();
+  const { category } = useCategory();
+  const { questions } = useQuestions();
+  const { tags } = useTags();
 
   const [selectedTags, setSelectedTags] = useState<number[]>([]);
 
   useEffect(() => {
-    if (!getValues("category_id")) {
-      setValue("category_id", state.current.category?.category.id || 0);
+    if (category) {
+      if (!getValues("category_id")) {
+        setValue("category_id", category.id);
+      }
     }
-  }, [state, getValues, setValue]);
+  }, [category, getValues, setValue]);
 
   const formattedQuestions = useMemo(() => {
-    return state.current.category?.questions.map((q) => {
+    if (!questions) return null;
+    return questions.map((q) => {
       return {
         ...q,
         tags: JSON.parse(q.tags),
         options: JSON.parse(q.options),
       };
     });
-  }, [state]);
+  }, [questions]);
 
   const toggleQuestion = (questionId: number) => {
     if (getValues("questions")?.includes(questionId)) {
@@ -93,7 +98,7 @@ export const CustomTestForm: React.FC<Props> = ({
         />
         <p className="text-xs">{t("tests.forms.custom.selectTests")}</p>
         <FilterWrapper
-          tags={state.current.subject?.tags || null}
+          tags={tags}
           selectedTags={selectedTags}
           setSelectedTags={setSelectedTags}
         />

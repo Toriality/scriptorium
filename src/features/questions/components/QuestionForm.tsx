@@ -3,13 +3,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, SubmitInput } from "@/components/Form";
 import { TextAreaInput } from "@/components/Form/TextAreaInput";
-import { TagList } from "@/features/tags";
-import { useData } from "@/providers/Data";
+import { TagList, useTags } from "@/features/tags";
 import { useEffect } from "react";
 import { InputError } from "@/components/Form/InputError";
 import { useTranslation } from "react-i18next";
 import { QuestionFormType } from "..";
 import { format } from "../utils/format";
+import { useCategory } from "@/features/categories";
 
 interface Props {
   title: string;
@@ -37,11 +37,14 @@ export const QuestionForm: React.FC<Props> = ({
     defaultValues: defaultValues,
   });
 
-  const { state } = useData();
+  const { category } = useCategory();
+  const { tags } = useTags();
 
   useEffect(() => {
-    setValue("category_id", state.current.category?.category.id || 0);
-  }, [state, setValue]);
+    if (category) {
+      setValue("category_id", category.id);
+    }
+  }, [setValue, category]);
 
   return (
     <Form>
@@ -97,7 +100,7 @@ export const QuestionForm: React.FC<Props> = ({
               }
             }}
             toggledTags={getValues("tags") || []}
-            tags={state.current.subject?.tags || null}
+            tags={tags || null}
           />
           <div className="mx-auto">
             <InputError>{errors.tags?.message}</InputError>

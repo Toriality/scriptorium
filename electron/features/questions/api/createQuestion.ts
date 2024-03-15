@@ -24,6 +24,7 @@ export const createQuestion: CreateQuestion = async (
     true,
   )) as QuestionDatabaseType;
 
+  console.log("Question created");
   return {
     message: "Question created",
     success: true,

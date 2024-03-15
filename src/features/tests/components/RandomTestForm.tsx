@@ -1,13 +1,14 @@
-import { useData } from "@/providers/Data";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RandomTestSchemaType, randomTestSchema } from "../utils/schema";
 import { useForm } from "react-hook-form";
 import { Form, SubmitInput, TextInput } from "@/components/Form";
-import { TagList } from "@/features/tags";
+import { TagList, useTags } from "@/features/tags";
 import { InputError } from "@/components/Form/InputError";
 import { useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { RandomTestFormType } from "..";
+import { useCategory } from "@/features/categories";
+import { useQuestions } from "@/features/questions";
 
 interface Props {
   title: string;
@@ -39,7 +40,9 @@ export const RandomTestForm: React.FC<Props> = ({
     resolver: zodResolver(randomTestSchema),
   });
 
-  const { state } = useData();
+  const { category } = useCategory();
+  const { questions } = useQuestions();
+  const { tags } = useTags();
 
   const toggleTag = (tagId: number) => {
     if (getValues("tags").includes(tagId)) {
@@ -53,24 +56,24 @@ export const RandomTestForm: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    if (!getValues("category_id")) {
-      setValue("category_id", state.current.category?.category.id || 0);
+    if (category) {
+      if (!getValues("category_id")) {
+        setValue("category_id", category.id);
+      }
     }
-  }, [state, getValues, setValue]);
+  }, [category, getValues, setValue]);
 
   const selectedTags = watch("tags");
 
   const maxNumberOfQuestions = useMemo(() => {
     if (selectedTags.length === 0) {
       clearErrors("tags");
-      return state.current.category?.questions.length || 0;
+      return questions?.length || 0;
     }
-    const availableQuestions = state.current.category?.questions.filter(
-      (question) => {
-        const tagIds = JSON.parse(question.tags);
-        return selectedTags.some((tag) => tagIds.includes(tag));
-      },
-    );
+    const availableQuestions = questions?.filter((question) => {
+      const tagIds = JSON.parse(question.tags);
+      return selectedTags.some((tag) => tagIds.includes(tag));
+    });
     if (availableQuestions?.length === 0) {
       setError("tags", {
         message: t("tests.forms.errors.random.noQuestions"),
@@ -79,7 +82,7 @@ export const RandomTestForm: React.FC<Props> = ({
       clearErrors("tags");
     }
     return availableQuestions?.length || 0;
-  }, [state, selectedTags, setError, clearErrors]);
+  }, [questions, t, selectedTags, setError, clearErrors]);
 
   return (
     <Form>
@@ -110,10 +113,7 @@ export const RandomTestForm: React.FC<Props> = ({
           </div>
           <div className="space-y-3">
             <p className="text-xs">{t("tests.forms.random.selectTags")}</p>
-            <TagList
-              handleToggleTag={(t) => toggleTag(t.id)}
-              tags={state.current.subject?.tags || null}
-            />
+            <TagList handleToggleTag={(t) => toggleTag(t.id)} tags={tags} />
             {errors.tags?.message && (
               <InputError>{errors.tags?.message}</InputError>
             )}

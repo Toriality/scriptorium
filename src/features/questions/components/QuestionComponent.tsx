@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Markdown from "marked-react";
 import { useMemo } from "react";
 import { QuestionDatabaseType } from "../types";
-import { useData } from "@/providers/Data";
-import { TagComponent } from "@/features/tags";
+import { TagComponent, useTags } from "@/features/tags";
 import { twMerge } from "tailwind-merge";
 import { convert } from "../utils/convert";
 import { useTheme } from "@/providers/Theme/useTheme";
@@ -25,17 +24,13 @@ export const QuestionComponent: React.FC<QuestionComponentProps> = ({
   setAnswer,
   submittedAnswer,
 }) => {
-  const { actions } = useData();
   const { theme } = useTheme();
+  const { tags } = useTags(JSON.parse(question.tags));
 
   const formattedQuestion = useMemo(() => {
     if (!question) return null;
     else return convert(question);
   }, [question]);
-
-  const tags = useMemo(() => {
-    return actions.getTags(formattedQuestion?.tags || []);
-  }, [formattedQuestion, actions]);
 
   if (!formattedQuestion) return null;
 
@@ -85,7 +80,7 @@ export const QuestionComponent: React.FC<QuestionComponentProps> = ({
         </article>
       </div>
       <ul className="flex justify-end gap-2">
-        {tags.map((t) => (
+        {tags?.map((t) => (
           <TagComponent className="text-xs" key={t.id} tag={t} />
         ))}
       </ul>

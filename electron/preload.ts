@@ -17,6 +17,10 @@ const ipcRendererCustomMethods: IpcMethods = {
   deleteSubject(subjectData) {
     return ipcRenderer.invoke("deleteSubject", subjectData);
   },
+
+  getCategories(subject) {
+    return ipcRenderer.invoke("getCategories", subject);
+  },
   getCategory(subject, category_id) {
     return ipcRenderer.invoke("getCategory", subject, category_id);
   },
@@ -34,11 +38,22 @@ const ipcRendererCustomMethods: IpcMethods = {
   deleteCategory(subject, categoryData) {
     return ipcRenderer.invoke("deleteCategory", subject, categoryData);
   },
+
+  getTags(subject, ids) {
+    return ipcRenderer.invoke("getTags", subject, ids);
+  },
   addTag(subject, tagname) {
     return ipcRenderer.invoke("addTag", subject, tagname);
   },
   deleteTag(subject, tag) {
     return ipcRenderer.invoke("deleteTag", subject, tag);
+  },
+
+  getQuestions(subject, category_id) {
+    return ipcRenderer.invoke("getQuestions", subject, category_id);
+  },
+  getQuestion(subject, question_id) {
+    return ipcRenderer.invoke("getQuestion", subject, question_id);
   },
   createQuestion(subject, question) {
     return ipcRenderer.invoke("createQuestion", subject, question);
@@ -48,6 +63,13 @@ const ipcRendererCustomMethods: IpcMethods = {
   },
   deleteQuestion(subject, question) {
     return ipcRenderer.invoke("deleteQuestion", subject, question);
+  },
+
+  getTests(subject, category_id) {
+    return ipcRenderer.invoke("getTests", subject, category_id);
+  },
+  getTest(subject, test_id) {
+    return ipcRenderer.invoke("getTest", subject, test_id);
   },
   createCustomTest(subject, test) {
     return ipcRenderer.invoke("createCustomTest", subject, test);

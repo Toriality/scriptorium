@@ -1,6 +1,5 @@
 import { HashRouter } from "react-router-dom";
 import { ToastContainer } from "@/lib/ToastContainer";
-import { DataProvider } from "@/providers/Data";
 import { Routes } from "./routes";
 import { initFontAwesome } from "@/lib/FontAwesome";
 
@@ -15,13 +14,11 @@ export const App: React.FC = () => {
   return (
     <HashRouter>
       <ToastContainer />
-      <DataProvider>
-        <ThemeProvider>
-          <Layout>
-            <Routes />
-          </Layout>
-        </ThemeProvider>
-      </DataProvider>
+      <ThemeProvider>
+        <Layout>
+          <Routes />
+        </Layout>
+      </ThemeProvider>
     </HashRouter>
   );
 };

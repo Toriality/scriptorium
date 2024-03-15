@@ -18,6 +18,12 @@ import { createCustomTest } from "../features/tests/api/createCustomTest";
 import { createRandomTest } from "../features/tests/api/createRandomTest";
 import { deleteTest } from "../features/tests/api/deleteTest";
 import { submitTest } from "../features/tests/api/submitTest";
+import { getCategories } from "../features/categories/api/getCategories";
+import { getTags } from "../features/tags/api/getTags";
+import { getQuestions } from "../features/questions/api/getQuestions";
+import { getTests } from "../features/tests/api/getTests";
+import { getQuestion } from "../features/questions/api/getQuestion";
+import { getTest } from "../features/tests/api/getTest";
 
 export const configureIpc = () => {
   ipcMain.on("quit", () => close());
@@ -34,6 +40,8 @@ export const configureIpc = () => {
     editSubject(oldSubject, newSubject),
   );
   ipcMain.handle("deleteSubject", (_, subject) => deleteSubject(subject));
+
+  ipcMain.handle("getCategories", (_, subject) => getCategories(subject));
   ipcMain.handle("getCategory", (_, subject, category_id) =>
     getCategory(subject, category_id),
   );
@@ -46,8 +54,17 @@ export const configureIpc = () => {
   ipcMain.handle("deleteCategory", (_, subject, categoryData) =>
     deleteCategory(subject, categoryData),
   );
+
+  ipcMain.handle("getTags", (_, subject, ids) => getTags(subject, ids));
   ipcMain.handle("addTag", (_, subject, tagname) => addTag(subject, tagname));
   ipcMain.handle("deleteTag", (_, subject, tag) => deleteTag(subject, tag));
+
+  ipcMain.handle("getQuestions", (_, subject, category_id) =>
+    getQuestions(subject, category_id),
+  );
+  ipcMain.handle("getQuestion", (_, subject, question_id) =>
+    getQuestion(subject, question_id),
+  );
   ipcMain.handle("createQuestion", (_, subject, question) =>
     createQuestion(subject, question),
   );
@@ -57,6 +74,11 @@ export const configureIpc = () => {
   ipcMain.handle("deleteQuestion", (_, subject, question) =>
     deleteQuestion(subject, question),
   );
+
+  ipcMain.handle("getTests", (_, subject, category_id) =>
+    getTests(subject, category_id),
+  );
+  ipcMain.handle("getTest", (_, subject, test_id) => getTest(subject, test_id));
   ipcMain.handle("createCustomTest", (_, subject, test) =>
     createCustomTest(subject, test),
   );

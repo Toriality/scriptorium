@@ -2,14 +2,13 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { QuestionComponent } from "..";
-import { useData } from "@/providers/Data";
-import { useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { Card } from "@/components/Card";
 import { SubmitInput } from "@/components/Form";
 import { InputError } from "@/components/Form/InputError";
 import { useTranslation } from "react-i18next";
 import { AnimatedPage } from "@/components/UI/AnimatedPage";
+import { useQuestion } from "../hooks/useQuestion";
 
 const schema = z.object({
   answer: z.number(),
@@ -32,14 +31,7 @@ export const ShowQuestionPage: React.FC = () => {
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
-  const { state } = useData();
-  const { question_id } = useParams();
-
-  const question = useMemo(() => {
-    return state.current.category?.questions.find(
-      (q) => q.id === parseInt(question_id!),
-    );
-  }, [state, question_id]);
+  const { question } = useQuestion();
 
   const setAnswer = (answer: number) => {
     if (submittedAnswer !== undefined) return;

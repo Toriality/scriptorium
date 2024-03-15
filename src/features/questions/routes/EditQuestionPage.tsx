@@ -1,9 +1,7 @@
 import { Card } from "@/components/Card";
-import { useNavigate } from "react-router-dom";
-import { useData } from "@/providers/Data";
-import { useQuestion } from "../hook/useQuestion";
+import { useQuestion } from "../hooks/useQuestion";
 import { useTranslation } from "react-i18next";
-import { QuestionFormType } from "..";
+import { QuestionFormType, useQuestions } from "..";
 import { QuestionForm as QuestionFormComponent } from "../components/QuestionForm";
 import { convert } from "../utils/convert";
 import { AnimatedPage } from "@/components/UI/AnimatedPage";
@@ -11,15 +9,13 @@ import { AnimatedPage } from "@/components/UI/AnimatedPage";
 export const EditQuestionPage = () => {
   const { t } = useTranslation();
 
-  const { actions, state } = useData();
-  const { question } = useQuestion({ state });
-  const navigate = useNavigate();
+  const { question } = useQuestion();
+  const { editQuestion } = useQuestions();
 
   const defaultValues = question ? convert(question) : null;
 
   async function onSubmit(data: QuestionFormType) {
-    await actions.editQuestion(data);
-    navigate("../../", { replace: true });
+    editQuestion(data);
   }
 
   return (

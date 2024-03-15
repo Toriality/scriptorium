@@ -1,7 +1,7 @@
 {
   "name": "scriptorium",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Toriality",
   "description": "scriptorium is an app that helps you studying by allowing you to build custom questions and tests.",
   "scripts": {

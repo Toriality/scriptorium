@@ -1,20 +1,17 @@
 import { Card } from "@/components/Card";
-import { useNavigate } from "react-router-dom";
-import { useData } from "@/providers/Data";
 import { QuestionForm } from "../components/QuestionForm";
 import { QuestionFormType as QuestionFormType } from "../types";
 import { useTranslation } from "react-i18next";
 import { AnimatedPage } from "@/components/UI/AnimatedPage";
+import { useQuestions } from "..";
 
 export const NewQuestionPage = () => {
   const { t } = useTranslation();
 
-  const { actions } = useData();
-  const navigate = useNavigate();
+  const { createQuestion } = useQuestions();
 
   async function onSubmit(data: QuestionFormType) {
-    await actions.createQuestion(data);
-    navigate("../../", { replace: true });
+    createQuestion(data);
   }
 
   return (

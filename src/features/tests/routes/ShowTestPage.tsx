@@ -1,15 +1,14 @@
 import { Card } from "@/components/Card";
 import { SubmitInput } from "@/components/Form";
-import { QuestionComponent } from "@/features/questions";
-import { useData } from "@/providers/Data";
+import { QuestionComponent, useQuestions } from "@/features/questions";
 import { useMemo } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { InputError } from "@/components/Form/InputError";
 import { useTranslation } from "react-i18next";
 import { AnimatedPage } from "@/components/UI/AnimatedPage";
+import { useTest } from "../hooks/useTest";
 
 const schema = z.object({
   answers: z.array(z.number()).default([]),
@@ -30,24 +29,9 @@ export const ShowTestPage: React.FC = () => {
     resolver: zodResolver(schema),
     defaultValues: { answers: [] },
   });
-  const { state, actions } = useData();
-  const { test_id } = useParams();
 
-  const test = useMemo(() => {
-    if (state.current.category && test_id) {
-      const test = state.current.category.tests.find(
-        (test) => test.id === parseInt(test_id),
-      );
-      return test;
-    }
-  }, [state, test_id]);
-
-  const questions = useMemo(() => {
-    if (test) {
-      const questionIds = JSON.parse(test.questions);
-      return actions.getQuestions(questionIds);
-    }
-  }, [actions, test]);
+  const { test, submitTest } = useTest();
+  const { questions } = useQuestions(JSON.parse(test?.questions || "[]"));
 
   const submittedAnswers = useMemo(() => {
     if (test) {
@@ -74,7 +58,7 @@ export const ShowTestPage: React.FC = () => {
       answers: JSON.stringify(data.answers),
       completed: 1,
     };
-    actions.submitTest(submittedTest);
+    submitTest(submittedTest);
     setValue("answers", []);
   };
 
@@ -84,7 +68,7 @@ export const ShowTestPage: React.FC = () => {
       ...test,
       answers: null,
     };
-    actions.submitTest(submittedTest);
+    submitTest(submittedTest);
   };
 
   return (
