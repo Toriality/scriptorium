@@ -1,10 +1,8 @@
 <h1 align=center>Scriptorium: The Study App</h1>
 
+<p align="center"><img src="https://github.com/Rathard/scriptorium/assets/33904908/bf992307-d45c-443f-8b0a-0abcdc23cfdf"></p>
+
 <h3 align=center>The perfect way to organize your study materials, homework or group any knowledge and create fully customized tests!</h3>
-
-<p align="center"><img src="https://github.com/Rathard/scriptorium/assets/33904908/7ebaf17c-483a-461c-8ea8-ed4f55314c29"></p>
-
-HexGuesser is a simple and silly fun game where you are tasked with guessing the hex code of endlessly generated random colors.
 
 <h2 align=center>Features:</h2>
 
