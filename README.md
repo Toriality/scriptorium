@@ -4,4 +4,4 @@
 
 ### Download
 
-[Click here to download Scriptorium](#)
+[Click here to download Scriptorium](https://github.com/Toriality/scriptorium/releases/tag/release)
